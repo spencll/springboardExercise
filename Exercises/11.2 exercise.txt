@@ -1,0 +1,11 @@
+const PI = 3.14
+
+- What is the difference between ***var*** and ***let***?
+let is ES2015, block scope. Can't redeclare.
+- What is the difference between **var** and ***const***?
+Const is ES2015, block scope. Can't redeclare or reassign to new value
+- What is the difference between **let** and **const**?
+Let can reassign but const can't
+- What is hoisting?
+Variable hoisted to the top as undeclared, then defined later
+
