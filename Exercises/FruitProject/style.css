@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box; 
+}
+
+input:focus {
+  opacity: 1;
+  box-shadow: none;
+}
+
+body {
+  height: 100%;
+  background: linear-gradient(to right, yellow, orange);
+}
+
+input {
+  opacity: 0.5;
+  background: linear-gradient(to right, yellow, orange);
+  position: relative;
+  left: 45%;  
+  margin-top: 25%;
+  height: 75px;
+  font-size: larger;
+  box-shadow: 10px 5px 5px red;
+}
+
+.search-container {
+  font-size: larger;
+}
+
+.search-container input,
+.search-container .suggestions {
+ 
+}
+.search-container input {
+  
+}
+
+.search-container .suggestions {
+  
+}
+
+ul {
+padding-left: 0;
+margin-top: 0;
+margin-left: 45%;
+width: 297px;
+}
+
+ul.has-suggestions {
+}
+
+ul li {
+  position: relative;
+  list-style-type: none;
+  border: 1px solid black;
+  height: 50px;
+}
+ul li:hover {
+  background-color: darkorange;
+}
+
+input {
+   /* TODO */
+}
