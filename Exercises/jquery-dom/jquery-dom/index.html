@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+  <style>
+
+    img {
+      max-width: 70%;
+    }
+
+    .image-center {
+      display: block;
+      margin: 10px auto;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1 id="title" class="text-center">Welcome to my website.</h1>
+  <div class="row">
+    <article class="col-sm-8">
+      <p>My website is very important because I have many important things
+        to say. Here is a picture of a puppy in a cup: </p>
+      <img src="pup-in-cup.jpg" alt="Puppy in Cup">
+      <p>Here are some more thoughts: Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Cum harum labore veritatis, possimus
+        facilis quas repellat, explicabo, ad commodi ipsum quidem nostrum
+        earum pariatur fugit! Magni sunt nulla impedit! Facilis.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, natus
+        qui nostrum libero atque hic distinctio sint facilis nihil possimus
+        tenetur deserunt rerum laboriosam cum quisuam doloremque ducimus
+        error.</p>
+      <p>Rerum debitis aspernatur, ipsum animi! Quis ullam dolore blanditiis
+        accusantium eius minus tempore, iure maxime similique vel! Possimus
+        reprehenderit autem, recusandae quos laudantium nesciunt libero suscipit
+        officia rerum, et.</p>
+      <p>Aliquam harum at soluta id esse perspiciatis, nesciunt corporis nostrum
+        commodi, dolorum, repellat possimus a cumque. Id sed explicabo, quaerat
+        sit esse facere, voluptatem, odit nesciunt eveniet assumenda, error!</p>
+      <p>Consequuntur porro, nobis placeat, labore magni aliquam repellendus
+        consequatur hic facere, molestiae dolorum suscipit quos sint, minima
+        Quibusdam voluptatem est hic, corporis. Officiis delectus, consectetur
+        harum reiciendis perferendis.</p>
+    </article>
+    <aside class="col-sm-4">
+      <h4>I love lists. Here's why.</h4>
+      <ol>
+        <li>Sometimes they're numbered, and numbers are great.</li>
+        <li>Sometimes they're not, and that's okay too.</li>
+        <li>I don't have the attention span to read paragraphs.</li>
+        <li>Hey look, there's a puppy!</li>
+      </ol>
+    </aside>
+  </div>
+  <div class="row mb-5">
+    <div class="col-sm-4">
+      Red
+      <input class="form-control" type="number" min="0" max="255" value="255">
+    </div>
+    <div class="col-sm-4">
+      Blue
+      <input class="form-control" type="number" min="0" max="255" value="255">
+    </div>
+    <div class="col-sm-4">
+      Green
+      <input class="form-control" type="number" min="0" max="255" value="255">
+    </div>
+  </div>
+</div>
+<!--Part 2 ## **Part Two - Movies App!**
+
+Build an application that uses jQuery to do the following:
+
+- Contains a form with two inputs for a title and rating along with a button to submit the form.
+- When the form is submitted, capture the values for each of the inputs and append them to the DOM along with a button to remove each title and rating from the DOM.
+- When the button to remove is clicked, remove each title and rating from the DOM.
+
+## **Further Study**
+
+- Ensure that the rating of a movie can only be between 0 and 10.
+- Ensure that a title has at least 2 characters in it.
+- Allow users to sort alphabetically by the title of the movie or by the rating of the movie from lowest to highest and vice versa.-->
+
+<form id="p2">
+  <input id="movTitle" placeholder="Movie Title">
+  <input id="rating" placeholder= "Rating">
+  <button id="submit">Submit</button>
+  <button id="sortMovie">Sort movie</button>
+  <button id="sortRating">Sort rating</button>
+  <ol id="movies">
+
+  </ol>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+   $(`#submit`).on(`click`, function(e){
+    e.preventDefault()
+    const title = $(`#movTitle`).val()
+    const rating = $(`#rating`).val() 
+    if (title.length<2){
+      alert(`Title has to be greater than 2 char`)
+      return 
+    }
+    if (rating<0 || rating >10 || isNaN(rating)) {
+      alert(`Rating has to be 0-10`)
+      return 
+    }
+
+    $(`#movies`).append(`<li>Movie: ${title}/ Rating: ${rating}</li>`).append(`<button id = ${`delete`}> Delete </button>`)
+    $(`#delete`).on(`click`, function(e){
+      e.preventDefault();
+      $(e.target.previousSibling).remove()
+      $(e.target).remove()
+
+    
+    })
+    //I gave up
+    $(`#sortMovie`).on(`click`, function(){
+      e.preventDefault();
+    })
+})
+
+
+  //1. When the DOM is ready, console.log the message “Let’s get ready to party with jQuery!”
+  $(function() {
+    console.log(`Let’s get ready to party with jQuery!`)
+  })
+  //2. Give all images inside of an article tag the class of image-center (this class is defined inside of the style tag in the head).
+  $(`a img`)
+    .addClass(`image-center`)
+  //3. Remove the last paragraph in the article.
+  $(`.col-sm-8 p:last-child`).remove()
+  //4. Set the font size of the title to be a random pixel size from 0 to 100.
+  $(`#title`)
+    .css(`font-size`, Math.floor(Math.random() * 100))
+  //5. Add an item to the list; it can say whatever you want.
+  $(`aside ol`)
+    .append(`<li>Hummus</li>`)
+    //6. Scratch that; the list is silly. Empty the aside and put a paragraph in it apologizing for the list’s existence.
+    $(`aside ol`)
+      .empty()
+      .append(`<p>Sorry for the list </p>`)
+     //7. When you change the numbers in the three inputs on the bottom, the background color of the body should change to match whatever the three values in the inputs are.
+     $(".form-control").on('keyup', function () {
+     let red =  $(`.form-control`).eq(0).val()
+     let blue = $(`.form-control`).eq(1).val()
+     let green =$(`.form-control`).eq(2).val()
+     $(`body`)
+        .css(`background-color`, `rgb(`+red+`,`+blue+`,`+green+`)`)
+     })
+     //8. Add an event listener so that when you click on the image, it is removed from the DOM.
+     $(`img`).on(`click`, function(e){
+      $(e.target).remove()
+     })
+
+    //Part 2
+
+
+
+</script>
+</body>
+
+</html>
